@@ -1,0 +1,378 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    /* Ocean / Aquatic Light Theme */
+    --background: 195 100% 98%;
+    --foreground: 200 50% 15%;
+
+    --card: 195 80% 97%;
+    --card-foreground: 200 50% 15%;
+
+    --popover: 195 60% 96%;
+    --popover-foreground: 200 50% 15%;
+
+    --primary: 190 90% 45%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 195 40% 92%;
+    --secondary-foreground: 200 50% 20%;
+
+    --muted: 195 30% 94%;
+    --muted-foreground: 200 20% 45%;
+
+    --accent: 175 70% 45%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 160 84% 39%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 200 50% 15%;
+
+    --border: 195 40% 88%;
+    --input: 195 40% 90%;
+    --ring: 190 90% 45%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 195 50% 96%;
+    --sidebar-foreground: 200 20% 40%;
+    --sidebar-primary: 190 90% 45%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 195 40% 92%;
+    --sidebar-accent-foreground: 200 50% 20%;
+    --sidebar-border: 195 40% 88%;
+    --sidebar-ring: 190 90% 45%;
+
+    /* Ocean gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(190 90% 45%), hsl(175 70% 45%));
+    --gradient-card: linear-gradient(180deg, hsl(195 80% 98% / 0.8), hsl(195 60% 95% / 0.6));
+    --gradient-glow: radial-gradient(600px at 50% 0%, hsl(190 90% 50% / 0.15), transparent);
+    --gradient-ocean: linear-gradient(180deg, hsl(195 100% 98%), hsl(200 80% 94%), hsl(195 60% 90%));
+
+    /* Liquid glass effect */
+    --glass-background: hsl(195 80% 98% / 0.7);
+    --glass-border: hsl(195 60% 85% / 0.5);
+    --glass-shadow: 0 8px 32px hsl(200 60% 50% / 0.1);
+
+    /* Ocean shadows */
+    --shadow-sm: 0 1px 3px hsl(200 50% 50% / 0.08);
+    --shadow-md: 0 4px 12px hsl(200 50% 50% / 0.1);
+    --shadow-lg: 0 12px 40px hsl(200 50% 50% / 0.12);
+    --shadow-glow: 0 0 40px -10px hsl(190 90% 50% / 0.3);
+  }
+
+  .dark {
+    --background: 222 47% 6%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 8%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 10%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 238 84% 67%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217 33% 14%;
+    --muted-foreground: 215 20% 55%;
+
+    --accent: 238 84% 67%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 210 40% 98%;
+
+    --success: 142 71% 45%;
+    --success-foreground: 210 40% 98%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 222 47% 6%;
+
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 238 84% 67%;
+
+    --sidebar-background: 222 47% 6%;
+    --sidebar-foreground: 215 20% 65%;
+    --sidebar-primary: 238 84% 67%;
+    --sidebar-primary-foreground: 210 40% 98%;
+    --sidebar-accent: 217 33% 12%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 217 33% 10%;
+    --sidebar-ring: 238 84% 67%;
+
+    /* Custom gradients - dark */
+    --gradient-primary: linear-gradient(135deg, hsl(238 84% 67%), hsl(280 84% 60%));
+    --gradient-card: linear-gradient(180deg, hsl(222 47% 10%), hsl(222 47% 7%));
+    --gradient-glow: radial-gradient(600px at 50% 0%, hsl(238 84% 67% / 0.15), transparent);
+
+    /* Custom shadows - dark */
+    --shadow-sm: 0 1px 2px 0 hsl(222 47% 3% / 0.5);
+    --shadow-md: 0 4px 6px -1px hsl(222 47% 3% / 0.5), 0 2px 4px -2px hsl(222 47% 3% / 0.5);
+    --shadow-lg: 0 10px 15px -3px hsl(222 47% 3% / 0.5), 0 4px 6px -4px hsl(222 47% 3% / 0.5);
+    --shadow-glow: 0 0 40px -10px hsl(238 84% 67% / 0.4);
+  }
+}
+
+@layer components {
+  /* Custom scrollbar */
+  .custom-scrollbar::-webkit-scrollbar {
+    @apply w-1.5;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-muted rounded-full;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/40;
+  }
+
+  /* Glassmorphism effect - adapts to theme */
+  .glass {
+    @apply backdrop-blur-xl border;
+    background: hsl(var(--card) / 0.7);
+    border-color: hsl(var(--border) / 0.5);
+  }
+
+  /* Liquid glass effect - light mode oceanic */
+  :root .liquid-glass {
+    background: linear-gradient(
+      135deg,
+      hsl(195 80% 98% / 0.8) 0%,
+      hsl(195 60% 96% / 0.6) 100%
+    );
+    backdrop-filter: blur(20px) saturate(1.2);
+    border: 1px solid hsl(195 60% 85% / 0.4);
+    box-shadow: 
+      0 8px 32px hsl(200 60% 50% / 0.08),
+      inset 0 1px 0 hsl(0 0% 100% / 0.5),
+      inset 0 -1px 0 hsl(200 50% 80% / 0.2);
+  }
+
+  .dark .liquid-glass {
+    background: hsl(var(--card) / 0.8);
+    backdrop-filter: blur(20px);
+    border: 1px solid hsl(var(--border) / 0.5);
+    box-shadow: 0 8px 32px hsl(222 47% 3% / 0.3);
+  }
+
+  /* Glow effect */
+  .glow-effect {
+    @apply relative;
+  }
+  
+  .glow-effect::before {
+    content: '';
+    @apply absolute -inset-1 rounded-xl opacity-0 transition-opacity duration-300;
+    background: var(--gradient-primary);
+    filter: blur(20px);
+    z-index: -1;
+  }
+  
+  .glow-effect:hover::before {
+    @apply opacity-30;
+  }
+
+  /* Status badges */
+  .status-new {
+    @apply bg-primary/20 text-primary border border-primary/30;
+  }
+  
+  .status-replied {
+    @apply bg-success/20 text-success border border-success/30;
+  }
+  
+  .status-pending {
+    @apply bg-warning/20 text-warning border border-warning/30;
+  }
+
+  /* Card hover effect */
+  .card-interactive {
+    @apply transition-all duration-200 hover:bg-secondary/50 hover:border-border/80;
+  }
+}
+
+@layer utilities {
+  /* Animation utilities */
+  .animate-slide-in {
+    animation: slideIn 0.3s ease-out;
+  }
+  
+  .animate-fade-up {
+    animation: fadeUp 0.4s ease-out;
+  }
+
+  /* Nebula animations - very slow, organic */
+  .animate-nebula-1 {
+    animation: nebulaDrift1 120s ease-in-out infinite;
+  }
+
+  .animate-nebula-2 {
+    animation: nebulaDrift2 150s ease-in-out infinite;
+  }
+
+  .animate-nebula-3 {
+    animation: nebulaDrift3 180s ease-in-out infinite;
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Nebula drift animations - extremely slow, never repeat same pattern feel */
+  @keyframes nebulaDrift1 {
+    0%, 100% {
+      transform: translate(0, 0) scale(1);
+      opacity: 0.03;
+    }
+    25% {
+      transform: translate(50px, 30px) scale(1.1);
+      opacity: 0.04;
+    }
+    50% {
+      transform: translate(-30px, 60px) scale(0.95);
+      opacity: 0.025;
+    }
+    75% {
+      transform: translate(20px, -20px) scale(1.05);
+      opacity: 0.035;
+    }
+  }
+
+  @keyframes nebulaDrift2 {
+    0%, 100% {
+      transform: translate(0, 0) scale(1) rotate(0deg);
+      opacity: 0.025;
+    }
+    33% {
+      transform: translate(-40px, -30px) scale(1.15) rotate(5deg);
+      opacity: 0.03;
+    }
+    66% {
+      transform: translate(30px, 40px) scale(0.9) rotate(-3deg);
+      opacity: 0.02;
+    }
+  }
+
+  @keyframes nebulaDrift3 {
+    0%, 100% {
+      transform: translate(0, 0) scale(1);
+      opacity: 0.02;
+    }
+    20% {
+      transform: translate(60px, -40px) scale(1.2);
+      opacity: 0.025;
+    }
+    40% {
+      transform: translate(-20px, 50px) scale(0.85);
+      opacity: 0.015;
+    }
+    60% {
+      transform: translate(-50px, -20px) scale(1.1);
+      opacity: 0.03;
+    }
+    80% {
+      transform: translate(30px, 30px) scale(0.95);
+      opacity: 0.02;
+    }
+  }
+
+  /* Materialization animations for dashboard emergence */
+  .animate-materialize {
+    animation: materialize 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .animate-materialize-delay-1 {
+    animation: materialize 1s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
+    opacity: 0;
+  }
+
+  .animate-materialize-delay-2 {
+    animation: materialize 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+    opacity: 0;
+  }
+
+  .animate-materialize-delay-3 {
+    animation: materialize 1s cubic-bezier(0.16, 1, 0.3, 1) 0.45s forwards;
+    opacity: 0;
+  }
+
+  .animate-materialize-delay-4 {
+    animation: materialize 1s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
+    opacity: 0;
+  }
+
+  .animate-materialize-delay-5 {
+    animation: materialize 1s cubic-bezier(0.16, 1, 0.3, 1) 0.75s forwards;
+    opacity: 0;
+  }
+
+  @keyframes materialize {
+    0% {
+      opacity: 0;
+      transform: scale(0.98) translateY(8px);
+      filter: blur(4px);
+    }
+    40% {
+      opacity: 0.5;
+      filter: blur(1px);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+      filter: blur(0);
+    }
+  }
+
+  /* Floating particle remnants */
+  .animate-particle-remnant {
+    animation: particleRemnant 3s ease-out forwards;
+  }
+
+  @keyframes particleRemnant {
+    0% {
+      opacity: 0.6;
+      transform: translate(0, 0) scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: translate(var(--drift-x, 20px), var(--drift-y, -30px)) scale(0.5);
+    }
+  }
+}
